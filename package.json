@@ -1,0 +1,25 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "RESTFul API Piiquante v1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scheuerkev/KevinScheuer_6_120821.git"
+  },
+  "keywords": [
+    "API",
+    "RESTFul",
+    "Piiquante",
+    "Backend"
+  ],
+  "author": "Kévin Scheuer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scheuerkev/KevinScheuer_6_120821/issues"
+  },
+  "homepage": "https://github.com/scheuerkev/KevinScheuer_6_120821#readme"
+}
