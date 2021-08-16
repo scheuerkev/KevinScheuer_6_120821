@@ -17,8 +17,7 @@
 > like and dislike other users' sauces. Hot Takes is split between front app and this backend app
 > (see below : "How to clone repos ?" ). This documentation tell how Piiquante API work.  
 
-### 🏠 [API Repository](https://github.com/scheuerkev/KevinScheuer_6_120821)
-
+### 🏠 [API Repository](https://github.com/scheuerkev/KevinScheuer_6_120821)  
 ##API Reference
 
 >Piiquante API is organized around REST. This REpresentational State Transfer provides a collection of builds based 
@@ -37,11 +36,9 @@
 ### API Documentation
 >Piiquante documentation is provided from OpenAPI 3.0
 
-### 📖 [See API Documentation](--LINK--)
-
-##How to clone repos and run app ?
-
-###Front-end repo 
+### 📖 [See API Documentation](--LINK--)  
+##How to clone repos and run app ?  
+###Front-end repo   
 >First, clone the repo in a frontend folder :   
 > ```git clone https://github.com/OpenClassrooms-Student-Center/dwj-projet6.git frontend```  
 > ````cd frontend````    
@@ -50,8 +47,8 @@
 > ```npm install node-sass@4.14.1```  
 > ```npm install angular```  
 > <br />Then, start front-end app :  
-> ```npm start```
-
+> ```npm start```  
+  
 ###Back-end repo
 >First, clone the repo in a backend folder :   
 > ```git clone https://github.com/scheuerkev/KevinScheuer_6_120821 backend```  
