@@ -21,5 +21,11 @@
   "bugs": {
     "url": "https://github.com/scheuerkev/KevinScheuer_6_120821/issues"
   },
-  "homepage": "https://github.com/scheuerkev/KevinScheuer_6_120821#readme"
+  "homepage": "https://github.com/scheuerkev/KevinScheuer_6_120821#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.13.7",
+    "nodemon": "^2.0.12",
+    "readme-md-generator": "^1.0.0"
+  }
 }
