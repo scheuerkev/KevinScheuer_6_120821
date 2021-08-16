@@ -34,17 +34,10 @@
 >Piiquante API uses JWT to notarize requests. As far as Piiquante is a private API, usage of Hot Take
 >only permit to authenticated users.   
 
-### Environment variables
->
+### API Documentation
+>Piiquante documentation is provided from OpenAPI 3.0
 
-### Endpoints definitions
->
-
-### Code snippets
->
-
-### Example responses
->
+### 📖 [See API Documentation](--LINK--)
 
 ##How to clone repos and run app ?
 
@@ -56,31 +49,39 @@
 > ```npm install```  
 > ```npm install node-sass@4.14.1```  
 > ```npm install angular```  
-> <br />Start front-end app :  
+> <br />Then, start front-end app :  
 > ```npm start```
->
-> 
 
-## Author
+###Back-end repo
+>First, clone the repo in a backend folder :   
+> ```git clone https://github.com/scheuerkev/KevinScheuer_6_120821 backend```  
+> ````cd backend````    
+> <br />Install dependencies :   
+> ```npm install```   
+> <br />Then, start API :   
+> ```nodemon server```  
+> <br />Console provide listening port :   
+> ```Server running on port : 3000```
 
-👤 **Kévin Scheuer**
+
+## Developed and maintained by
+
+🦊 **Kévin Scheuer**
 
 * Twitter: [@scheuerkev](https://twitter.com/scheuerkev)
 * Github: [@scheuerkev](https://github.com/scheuerkev)
-* LinkedIn: [@Kévin Scheuer](https://linkedin.com/in/Kévin Scheuer)
+* LinkedIn: [@Kévin Scheuer](https://www.linkedin.com/in/k%C3%A9vin-scheuer-078b1510b/)
 
-## 🤝 Contributing
+### 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/scheuerkev/KevinScheuer_6_120821/issues). You can also take a look at the [contributing guide](https://github.com/scheuerkev/KevinScheuer_6_120821/blob/master/CONTRIBUTING.md).
+Contributions, issues and feature requests are welcome!
 
-## Show your support
+### Show your support
 
 Give a ⭐️ if this project helped you!
 
-## 📝 License
+### 📝 License
 
-Copyright © 2021 [Kévin Scheuer](https://github.com/scheuerkev).<br />
-This project is [ISC](https://github.com/scheuerkev/KevinScheuer_6_120821/blob/master/LICENSE) licensed.
-
+Copyright © Kévin Scheuer 2021 - ISC license
 ***
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
