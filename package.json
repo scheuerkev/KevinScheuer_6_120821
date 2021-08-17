@@ -23,9 +23,12 @@
   },
   "homepage": "https://github.com/scheuerkev/KevinScheuer_6_120821#readme",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mongoose": "^5.13.7",
     "nodemon": "^2.0.12",
-    "readme-md-generator": "^1.0.0"
+    "readme-md-generator": "^1.0.0",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.1.6"
   }
 }
