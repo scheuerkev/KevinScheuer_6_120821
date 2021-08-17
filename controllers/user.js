@@ -9,7 +9,7 @@ bcrypt.hash(req.body.password, 10)
             password: hash
         });
         user.save()
-            .then(()=> res.status(200).json({ message: 'A new user was created in database' }))
+            .then(()=> res.status(201).json({ message: 'A new user was created in database' }))
             .catch(()=> res.status(404).json({ message: 'Unable to create user in database'}));
     })
     .catch(error => res.status(500).json({ error }));

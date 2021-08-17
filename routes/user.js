@@ -42,7 +42,7 @@ const userCtrl = require('../controllers/user.js');
  *          schema:
  *            $ref: '#/components/schemas/User'
  *    responses:
- *      200:
+ *      201:
  *        description: Create and save a new user to database
  *        content:
  *          application/json:
