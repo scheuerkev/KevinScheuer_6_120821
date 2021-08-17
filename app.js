@@ -25,6 +25,7 @@ const openAPIOptions = {
 
 const express = require('express');
 const mongoose = require('mongoose');
+const userRoutes = require('./routes/user.js');
 
 const openAPISpecs = swaggerJSDoc(openAPIOptions);
 const app = express();
@@ -37,6 +38,7 @@ mongoose.connect(process.env.MONGO_URI,
     .catch(()=> console.log('Data base connection failure'));
 
 
+app.use('/api/auth', userRoutes);
 app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(openAPISpecs));
 
 module.exports = app;
