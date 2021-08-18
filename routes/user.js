@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const passwordValidation = require('../middlewares/passwordValidator.js');
 
 const userCtrl = require('../controllers/user.js');
 
@@ -72,6 +73,16 @@ const userCtrl = require('../controllers/user.js');
  *                  message:
  *                    type: string
  *                    description: This user already exists
+ *      422:
+ *        description: Unprocessable entity, request and syntax are good by something mismatch
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                  message:
+ *                    type: string
+ *                    description: Password entered doesn't require security checks (between 8 and 100 chars, at least 2 digits, 1 uppercase, 1 lowercase)
  *      500:
  *        description: Internal server error
  *        content:
@@ -143,7 +154,7 @@ const userCtrl = require('../controllers/user.js');
  *
  * */
 
-router.post('/signup', userCtrl.signup);
+router.post('/signup', passwordValidation, userCtrl.signup);
 router.post('/login', userCtrl.login);
 
 module.exports = router;
