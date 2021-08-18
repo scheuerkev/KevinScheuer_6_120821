@@ -25,6 +25,7 @@ const openAPIOptions = {
 
 const express = require('express');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
 const userRoutes = require('./routes/user.js');
 
 const openAPISpecs = swaggerJSDoc(openAPIOptions);
@@ -45,7 +46,7 @@ app.use((req, res, next) => {
     next();
 });
 app.use(express.json());
-
+app.use(helmet());
 app.use('/api/auth', userRoutes);
 app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(openAPISpecs));
 

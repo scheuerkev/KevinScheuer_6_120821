@@ -62,6 +62,16 @@ const userCtrl = require('../controllers/user.js');
  *                  message:
  *                    type: string
  *                    description: Unable to create user in database
+ *      409:
+ *        description: Conflict error, a previous ressource is existing
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                  message:
+ *                    type: string
+ *                    description: This user already exists
  *      500:
  *        description: Internal server error
  *        content:
