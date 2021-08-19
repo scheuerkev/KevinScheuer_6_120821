@@ -33,6 +33,7 @@ const mongoose = require('mongoose');
 const helmet = require('helmet');
 const userRoutes = require('./routes/user.js');
 const sauceRoutes  = require('./routes/sauce.js');
+const path = require('path');
 
 const openAPISpecs = swaggerJSDoc(openAPIOptions);
 const app = express();
@@ -55,6 +56,7 @@ app.use((req, res, next) => {
 app.use('/api/', apiLimiter);
 app.use(express.json());
 app.use(helmet());
+app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/auth', userRoutes);
 app.use('/api/sauces', sauceRoutes);
 app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(openAPISpecs));

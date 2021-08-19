@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const sauceCtrl = require('../controllers/sauce.js');
 const auth = require('../middlewares/auth.js');
-
+const multer = require('../middlewares/multer-config.js');
 /**
  * @swagger
  * components :
@@ -34,25 +34,25 @@ const auth = require('../middlewares/auth.js');
  *         description:
  *           type: string
  *           description: Short description of the sauce
- *          mainPepper:
+ *         mainPepper:
  *           type: string
  *           description: The main spicy ingredient of the sauce
- *          imageUrl:
+ *         imageUrl:
  *           type: string
  *           description: URL of sauce's picture
- *          heat:
+ *         heat:
  *           type: number
  *           description: The strength of the sauce from 1 to 10
- *          likes:
+ *         likes:
  *           type: number
  *           description: How many users liked this sauce
- *          dislikes:
+ *         dislikes:
  *           type: number
  *           description: How many users disliked this sauce
- *          usersLiked:
+ *         usersLiked:
  *           type: array
  *           description: User's ids whom liked the sauce
- *          usersDisliked:
+ *         usersDisliked:
  *           type: array
  *           description: User's ids whom disliked the sauce
  *       example:
@@ -188,9 +188,9 @@ const auth = require('../middlewares/auth.js');
 
 router.get('/', auth, sauceCtrl.getSauces);
 router.get('/:id', auth, sauceCtrl.getSauce);
-router.post('/', auth, sauceCtrl.createSauce);
+router.post('/', auth, multer, sauceCtrl.createSauce);
 router.post('/:id/like', auth, sauceCtrl.addLike);
-router.put('/:id', auth, sauceCtrl.modifySauce);
+router.put('/:id', auth, multer, sauceCtrl.modifySauce);
 router.delete('/:id', auth, sauceCtrl.deleteSauce);
 
 module.exports = router;
