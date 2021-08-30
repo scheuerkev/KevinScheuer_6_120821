@@ -18,7 +18,7 @@
 > (see below : "How to clone repos ?" ). This documentation tell how Piiquante API work.  
 
 ### 🏠 [API Repository](https://github.com/scheuerkev/KevinScheuer_6_120821)  
-##API Reference
+###API Reference
 
 >Piiquante API is organized around REST. This REpresentational State Transfer provides a collection of builds based 
 >on HTTP protocol. As each RESTFul API, Piiquante respects 6 main guidelines : 
@@ -30,14 +30,28 @@
 >6. Code on demand    
 
 ### API Authentification
->Piiquante API uses JWT to notarize requests. As far as Piiquante is a private API, usage of Hot Take
+>Piiquante API uses [JSON Web Token](https://github.com/auth0/node-jsonwebtoken) to notarize requests. As far as Piiquante is a private API, usage of Hot Take
 >only permit to authenticated users.   
 
 ### API Documentation
->Piiquante documentation is provided from OpenAPI 3.0
+>Piiquante documentation is provided from [OpenAPI 3.0](https://github.com/OAI/OpenAPI-Specification)
 
-### 📖 [See API Documentation](http://localhost:3000/api/docs/#/)  
-##How to clone repos and run app ?  
+### 📖 [See API Documentation](http://localhost:3000/api/docs/#/) 
+⚠️ Run API to access documentation 
+
+###Dotenv configuration
+>To prevent security leaks and issues, Piiquante API use Dotenv to use environment variables.
+>[Dotenv](https://github.com/motdotla/dotenv) is a zero-dependency 
+> module that loads environments variables from a ```.env``` file into ```process.env``` 
+
+>1. Create your own ```.env``` file in the root directory of backend folder
+>2. Set your own variables based on the model NAME=VALUE
+>3. Provide value on the previous model for <br />```MONGO_URI=<YourDBCredentials>@<YourDBHost>``` <br /> as waited on MongoDB specifications
+>4. Provide value on the same model for <br />```TOKEN_KEY=<YourOwnTokenKey>``` <br /> a random alphanumeric chars string to ensure token encryption. 
+_(We highly recommend to use randomly generated string from at least 28 chars)_ 
+>5. Don't forget to gitignore your ```.env``` file 
+
+###How to clone repos and run app ?  
 ###Front-end repo   
 >First, clone the repo in a frontend folder :   
 > ```git clone https://github.com/OpenClassrooms-Student-Center/dwj-projet6.git frontend```  
@@ -61,7 +75,7 @@
 > ```Server running on port : 3000```
 
 
-## Developed and maintained by
+### Developed and maintained by
 
 🦊 **Kévin Scheuer**
 

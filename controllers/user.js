@@ -10,23 +10,21 @@ exports.signup = (req, res, next) => {
         return res.status(400).json({message: 'Please provide a valid email address'});
     }
 
-    User.findOne({ email: req.body.email })
+    User.findOne({email: req.body.email})
         .then(user => {
-            if(user) return res.status(409).json({message: 'This user already exists'});
+            if (user) return res.status(409).json({message: 'This user already exists'});
+            bcrypt.hash(req.body.password, 10)
+                .then(hash => {
+                    const user = new User({
+                        email: req.body.email,
+                        password: hash
+                    });
+                    user.save()
+                        .then(() => res.status(201).json({message: 'A new user was created in database'}))
+                        .catch(err => res.status(404).json({message: err}));
+                })
+                .catch(error => res.status(500).json({error}));
         })
-
-    bcrypt.hash(req.body.password, 10)
-        .then(hash => {
-            const user = new User({
-                email: req.body.email,
-                password: hash
-            });
-            user.save()
-                .then(() => res.status(201).json({message: 'A new user was created in database'}))
-                .catch(err => res.status(404).json({message: err}));
-        })
-        .catch(error => res.status(500).json({error}));
-
 };
 
 exports.login = (req, res, next) => {
