@@ -2,8 +2,19 @@ const User = require('../models/User.js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
+const emailMask = /^[a-z0-9-_]*[.]{0,1}[a-zA-Z0-9-_]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]{2,15}){1}$/;
 
 exports.signup = (req, res, next) => {
+
+    if (!(emailMask.test(req.body.email))) {
+        return res.status(400).json({message: 'Please provide a valid email address'});
+    }
+
+    User.findOne({ email: req.body.email })
+        .then(user => {
+            if(user) return res.status(409).json({message: 'This user already exists'});
+        })
+
     bcrypt.hash(req.body.password, 10)
         .then(hash => {
             const user = new User({
@@ -12,16 +23,10 @@ exports.signup = (req, res, next) => {
             });
             user.save()
                 .then(() => res.status(201).json({message: 'A new user was created in database'}))
-                .catch(err => {
-                    console.log()
-                    if (err.errors.email.properties.type === 'unique') {
-                        return res.status(409).json({message: 'This user already exists'});
-                    } else {
-                        return res.status(404).json({message: 'Unable to create user in database'});
-                    }
-                });
+                .catch(err => res.status(404).json({message: err}));
         })
         .catch(error => res.status(500).json({error}));
+
 };
 
 exports.login = (req, res, next) => {
