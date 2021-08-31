@@ -18,16 +18,16 @@
 > (see below : "How to clone repos ?" ). This documentation tell how Piiquante API work.  
 
 ### 🏠 [API Repository](https://github.com/scheuerkev/KevinScheuer_6_120821)  
-###API Reference
+### API Reference
 
 >Piiquante API is organized around REST. This REpresentational State Transfer provides a collection of builds based 
 >on HTTP protocol. As each RESTFul API, Piiquante respects 6 main guidelines : 
->1. Client / server separation
->2. Stateless
->3. Cacheable
->4. Uniforme interface
->5. Layered system
->6. Code on demand    
+1. Client / server separation
+2. Stateless
+3. Cacheable
+4. Uniforme interface
+5. Layered system
+6. Code on demand    
 
 ### API Authentification
 >Piiquante API uses [JSON Web Token](https://github.com/auth0/node-jsonwebtoken) to notarize requests. As far as Piiquante is a private API, usage of Hot Take
@@ -39,40 +39,42 @@
 ### 📖 [See API Documentation](http://localhost:3000/api/docs/#/) 
 ⚠️ Run API to access documentation 
 
-###Dotenv configuration
+## Dotenv configuration
+### What is Dotenv ?
 >To prevent security leaks and issues, Piiquante API use Dotenv to use environment variables.
 >[Dotenv](https://github.com/motdotla/dotenv) is a zero-dependency 
 > module that loads environments variables from a ```.env``` file into ```process.env``` 
 
->1. Create your own ```.env``` file in the root directory of backend folder
->2. Set your own variables based on the model NAME=VALUE
->3. Provide value on the previous model for <br />```MONGO_URI=<YourDBCredentials>@<YourDBHost>``` <br /> as waited on MongoDB specifications
->4. Provide value on the same model for <br />```TOKEN_KEY=<YourOwnTokenKey>``` <br /> a random alphanumeric chars string to ensure token encryption. 
+### Set up your own Dotenv
+1. Create your own ```.env``` file in the root directory of backend folder
+2. Set your own variables based on the model NAME=VALUE
+3. Provide value on the previous model for <br />```MONGO_URI=<YourDBCredentials>@<YourDBHost>``` <br /> as waited on MongoDB specifications
+4. Provide value on the same model for <br />```TOKEN_KEY=<YourOwnTokenKey>``` <br /> a random alphanumeric chars string to ensure token encryption. 
 _(We highly recommend to use randomly generated string from at least 28 chars)_ 
->5. Don't forget to gitignore your ```.env``` file 
+5. Don't forget to gitignore your ```.env``` file 
 
-###How to clone repos and run app ?  
-###Front-end repo   
->First, clone the repo in a frontend folder :   
-> ```git clone https://github.com/OpenClassrooms-Student-Center/dwj-projet6.git frontend```  
-> ````cd frontend````    
-> <br />Install dependencies :   
-> ```npm install```  
-> ```npm install node-sass@4.14.1```  
-> ```npm install angular```  
-> <br />Then, start front-end app :  
-> ```npm start```  
+## How to clone repos and run app ?  
+### Front-end repo   
+1. First, clone the repo in a frontend folder :   
+* ```git clone https://github.com/OpenClassrooms-Student-Center/dwj-projet6.git frontend```  
+* ````cd frontend````    
+2. Install dependencies :   
+* ```npm install```  
+* ```npm install node-sass@4.14.1```  
+* ```npm install angular```  
+3. Then, start front-end app :  
+* ```npm start```  
   
-###Back-end repo
->First, clone the repo in a backend folder :   
-> ```git clone https://github.com/scheuerkev/KevinScheuer_6_120821 backend```  
-> ````cd backend````    
-> <br />Install dependencies :   
-> ```npm install```   
-> <br />Then, start API :   
-> ```nodemon server```  
-> <br />Console provide listening port :   
-> ```Server running on port : 3000```
+### Back-end repo
+1. First, clone the repo in a backend folder :   
+* ```git clone https://github.com/scheuerkev/KevinScheuer_6_120821 backend```  
+* ````cd backend````    
+2. Install dependencies :   
+* ```npm install```   
+3. Then, start API :   
+* ```nodemon server```  
+4. Console reports listening port :   
+* ```Server running on port : 3000```
 
 
 ### Developed and maintained by

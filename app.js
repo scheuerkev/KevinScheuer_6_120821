@@ -20,6 +20,7 @@ const openAPIOptions = {
     },
     apis: ["./routes/*.js"],
 };
+const openAPISpecs = swaggerJSDoc(openAPIOptions);
 
 //Express rate-limit to constrain number of requests
 const rateLimit = require('express-rate-limit');
@@ -28,15 +29,20 @@ const apiLimiter = rateLimit({
     max: 100
 });
 
+//App requirements and security
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
-const userRoutes = require('./routes/user.js');
-const sauceRoutes  = require('./routes/sauce.js');
 const path = require('path');
 
-const openAPISpecs = swaggerJSDoc(openAPIOptions);
+//Importing routers
+const userRoutes = require('./routes/user.js');
+const sauceRoutes  = require('./routes/sauce.js');
+
+//Launching app
 const app = express();
+
+//Mongoose DB connection
 mongoose.connect(process.env.MONGO_URI,
     {
         useNewUrlParser: true,
@@ -53,6 +59,7 @@ app.use((req, res, next) => {
     next();
 });
 
+//Calls
 app.use('/api/', apiLimiter);
 app.use(express.json());
 app.use(helmet());
@@ -61,4 +68,5 @@ app.use('/api/auth', userRoutes);
 app.use('/api/sauces', sauceRoutes);
 app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(openAPISpecs));
 
+//Export the app
 module.exports = app;

@@ -1,10 +1,11 @@
+//Requirements for User schema
 const mongoose = require('mongoose');
-const mongooseUniqueValidator = require('mongoose-unique-validator');
 
+//Mongoose User schema
 const userSchema = mongoose.Schema({
-        email: {type: String, required: true, unique: true},
+        email: {type: String, required: true},
         password: {type: String, required: true}
     });
 
-userSchema.plugin(mongooseUniqueValidator);
+//Exporting schema
 module.exports = mongoose.model('User', userSchema);

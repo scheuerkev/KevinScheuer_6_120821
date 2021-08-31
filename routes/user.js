@@ -1,9 +1,10 @@
+//User routes requirements
 const express = require('express');
 const router = express.Router();
 const passwordValidation = require('../middlewares/passwordValidator.js');
-
 const userCtrl = require('../controllers/user.js');
 
+//Swagger doc
 /**
  * @swagger
  * components :
@@ -154,7 +155,9 @@ const userCtrl = require('../controllers/user.js');
  *
  * */
 
+//User CRUD
 router.post('/signup', passwordValidation, userCtrl.signup);
 router.post('/login', userCtrl.login);
 
+//Export router to the app
 module.exports = router;

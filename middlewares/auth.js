@@ -1,6 +1,8 @@
+//auth middleware requirements
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
+//Try catch bloc to grant request by JWT. Middleware split and verify token provided by user. If it fails, a 403 is catch
 module.exports = (req, res, next) => {
     try{
         const token = req.headers.authorization.split(' ')[1];
@@ -11,7 +13,7 @@ module.exports = (req, res, next) => {
         } else {
             next();
         }
-    }catch (err){
-        return res.status(403).json({ error: err | 'Unauthorized request'});
+    }catch (error){
+        return res.status(403).json({ error: error | 'Unauthorized request'});
     }
 }
