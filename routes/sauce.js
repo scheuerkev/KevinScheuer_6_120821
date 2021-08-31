@@ -106,7 +106,7 @@ const sauceCtrl = require('../controllers/sauce.js');
  * @swagger
  * /api/sauces/{id}:
  *  get:
- *    summary: Get a specify sauces
+ *    summary: Get a specific sauce
  *    tags: [Sauces]
  *    responses:
  *      200:
@@ -242,7 +242,7 @@ const sauceCtrl = require('../controllers/sauce.js');
 /**
  * @swagger
  * /api/sauces/{id}/like:
- *  put:
+ *  post:
  *    summary: Sets the "Like" status for the supplied userId. If like = 1, the user likes (= like) the sauce. If like = 0, the user cancels his like or his dislike. If like = -1, user doesn't like (= dislike) the sauce. The ID of user must be added or removed from the table appropriate.
  *    tags: [Sauces]
  *    requestBody:

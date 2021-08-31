@@ -1,5 +1,8 @@
 <h1 align="center">API Piiquante</h1>
 <p align="center">
+    <img alt="Logo Piiquante" src="https://i.ibb.co/HxZFzpy/output-onlinepngtools.png" width="120" />
+</p>
+<p align="center">
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/KevinScheuer_6_120821#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
@@ -12,10 +15,10 @@
   </a>
 </p>
 
-> Piiquante RESTFul API provides usage of Hot Takes web app. To enhance hype on hot sauce through, Hot Takes 
+> Piiquante RESTFul API provides usage of Hot Takes web app. To enhance hype through hots sauces, Hot Takes 
 > want to be the web's best hot sauce reviews. This application allow users to post their owns sauces, 
 > like and dislike other users' sauces. Hot Takes is split between front app and this backend app
-> (see below : [How to clone repos and run app ?](#how-to-clone-repos-and-run-app-?)). This documentation tell how Piiquante API work.  
+> (see below : [How to clone repos and run app ?](#how-to-clone-repos-and-run-app-)). This documentation tell how Piiquante API work.  
 
 ### 🏠 [API Repository](https://github.com/scheuerkev/KevinScheuer_6_120821)  
 ### API Reference

@@ -32,6 +32,7 @@ const apiLimiter = rateLimit({
 //App requirements and security
 const express = require('express');
 const mongoose = require('mongoose');
+const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const path = require('path');
 
@@ -41,6 +42,7 @@ const sauceRoutes  = require('./routes/sauce.js');
 
 //Launching app
 const app = express();
+
 
 //Mongoose DB connection
 mongoose.connect(process.env.MONGO_URI,
@@ -59,6 +61,7 @@ app.use((req, res, next) => {
     next();
 });
 
+
 //Calls
 app.use('/api/', apiLimiter);
 app.use(express.json());
@@ -67,6 +70,9 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/auth', userRoutes);
 app.use('/api/sauces', sauceRoutes);
 app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(openAPISpecs));
+
+//Sanitize payloads from Express to prevent NoSQL injections
+app.use(mongoSanitize());
 
 //Export the app
 module.exports = app;
