@@ -20,14 +20,10 @@ const sauceCtrl = require('../controllers/sauce.js');
  *         - mainPepper
  *         - imageUrl
  *         - heat
- *         - likes
- *         - dislikes
- *         - usersLiked
- *         - usersDislikes
  *       properties:
  *         userId:
  *           type: string
- *           description: User id provided by database
+ *           description: userId provided by database
  *         name:
  *           type: string
  *           description: The name of the sauce
@@ -49,9 +45,11 @@ const sauceCtrl = require('../controllers/sauce.js');
  *         likes:
  *           type: number
  *           description: How many users liked this sauce
+ *           default: 0
  *         dislikes:
  *           type: number
  *           description: How many users disliked this sauce
+ *           default: 0
  *         usersLiked:
  *           type: array
  *           description: User's ids whom liked the sauce
@@ -81,112 +79,224 @@ const sauceCtrl = require('../controllers/sauce.js');
  * @swagger
  * /api/sauces:
  *  get:
- *    summary: Sign up as a new user
+ *    summary: Get all existing sauces
  *    tags: [Sauces]
  *    responses:
- *      201:
- *        description: Create and save a new user to database
+ *      200:
+ *        description: An array of all existing sauces
  *        content:
  *          application/json:
  *            schema:
- *              type: object
- *              properties:
- *                  message:
- *                    type: string
- *                    description: A new user was created in database
- *      404:
- *        description: Creating user in database failed
- *        content:
- *          application/json:
- *            schema:
- *              type: object
- *              properties:
- *                  message:
- *                    type: string
- *                    description: Unable to create user in database
- *      409:
- *        description: Conflict error, a previous ressource is existing
- *        content:
- *          application/json:
- *            schema:
- *              type: object
- *              properties:
- *                  message:
- *                    type: string
- *                    description: This user already exists
- *      422:
- *        description: Unprocessable entity, request and syntax are good by something mismatch
- *        content:
- *          application/json:
- *            schema:
- *              type: object
- *              properties:
- *                  message:
- *                    type: string
- *                    description: Password entered doesn't require security checks (between 8 and 100 chars, at least 2 digits, 1 uppercase, 1 lowercase)
- *      500:
- *        description: Internal server error
+ *              type: array
+ *              items:
+ *                  type: object
+ *                  $ref: '#/components/schemas/Sauce'
+ *      400:
+ *        description: Unable to display sauces
  *        content:
  *          application/json:
  *            schema:
  *              type: object
  *              properties:
  *                  error:
- *                    type: string
- *                    description: Provide error description
- *
+ *                    type: object
+ *                    description: An error object provided by API when get fails
  * */
 /**
  * @swagger
  * /api/sauces/{id}:
  *  get:
- *    summary: Login as a registered user
+ *    summary: Get a specify sauces
  *    tags: [Sauces]
  *    responses:
  *      200:
- *        description: Find user by getting his id
+ *        description: Id matching sauce (based on params.id)
  *        content:
  *          application/json:
  *            schema:
- *              type: object
- *              properties:
- *                  userId:
- *                    type: string
- *                    description: User id
- *                  token:
- *                    type: string
- *                    description: Bearer JWT Token
- *      401:
- *        description: Password provided by user is incorrect
- *        content:
- *          application/json:
- *            schema:
- *              type: object
- *              properties:
- *                  message:
- *                    type: string
- *                    description: This password is incorrect
- *      404:
- *        description: Based-on-id search returns no result
- *        content:
- *          application/json:
- *            schema:
- *              type: object
- *              properties:
- *                  message:
- *                    type: string
- *                    description: Unable to find an user with this email
- *      500:
- *        description: Internal server error
+ *                $ref: '#/components/schemas/Sauce'
+ *      400:
+ *        description: Unable to display sauces
  *        content:
  *          application/json:
  *            schema:
  *              type: object
  *              properties:
  *                  error:
+ *                    type: object
+ *                    description: An error object provided by API when get fails
+ * */
+/**
+ * @swagger
+ * /api/sauces:
+ *  post:
+ *    summary: Create a new sauce
+ *    tags: [Sauces]
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/Sauce'
+ *    responses:
+ *      201:
+ *        description: Create and save a new sauce into database
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                  message:
  *                    type: string
- *                    description: Provide error description
- *
+ *                    description: Sauce created successfully!
+ *      400:
+ *        description: Creating sauce in database failed
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                  error:
+ *                    type: object
+ *                    description: An error object provided by API when get fails
+ * */
+/**
+ * @swagger
+ * /api/sauces/{id}:
+ *  put:
+ *    summary: Update the sauce with the id provided. If an image is downloaded, it is captured and the Url image of the sauce is updated. If no file is provided, sauce information are located directly in the body of the request (req.body.name, req.body.heat, etc.). If a file is provided, the sauce transformed into a chain of characters are in req.body.sauce.
+ *    tags: [Sauces]
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/Sauce'
+ *        text/plain:
+ *          schema:
+ *            properties:
+ *              sauce:
+ *                type: string
+ *              file:
+ *                type: string
+ *    responses:
+ *      200:
+ *        description: Sauce was successfully updated in database
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                  message:
+ *                    type: string
+ *                    description: Update successful
+ *      400:
+ *        description: Creating sauce in database failed
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                  error:
+ *                    type: object
+ *                    description: An error object provided by API when get fails
+ * */
+/**
+ * @swagger
+ * /api/sauces/{id}:
+ *  delete:
+ *    summary: Delete a specific sauce
+ *    tags: [Sauces]
+ *    responses:
+ *      200:
+ *        description: Deletion worked
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                  message:
+ *                    type: string
+ *                    description: Item successfully deleted
+ *      400:
+ *        description: Unable to delete sauce
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                  error:
+ *                    type: object
+ *                    description: An error object provided by API when get fails
+ *      500:
+ *        description: Server error, unable to find sauce to delete
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                  error:
+ *                    type: object
+ *                    description: An error object provided by API when get fails
+ * */
+/**
+ * @swagger
+ * /api/sauces/{id}/like:
+ *  put:
+ *    summary: Sets the "Like" status for the supplied userId. If like = 1, the user likes (= like) the sauce. If like = 0, the user cancels his like or his dislike. If like = -1, user doesn't like (= dislike) the sauce. The ID of user must be added or removed from the table appropriate.
+ *    tags: [Sauces]
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              userId:
+ *                type: string
+ *              like:
+ *                type: number
+ *    responses:
+ *      201:
+ *        description: Like/Dislike dropped out or added with success
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  description: Like/Dislike removed successfully | Like/Dislike successfully added
+ *      400:
+ *        description: Adding or updating like/dislike failed
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                error:
+ *                  type: object
+ *                  description: An error object provided by API when get fails
+ *      404:
+ *        description: Unable to reach like/dislike on matching sauce
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                error:
+ *                  type: object
+ *                  description: An error object provided by API when get fails
+ *      500:
+ *        description: Invalid value for req.body.like (!== 0/1/-1)
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  description: Internal server error
  * */
 
 //Sauce CRUD

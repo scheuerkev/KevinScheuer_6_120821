@@ -92,7 +92,7 @@ const userCtrl = require('../controllers/user.js');
  *              type: object
  *              properties:
  *                  error:
- *                    type: string
+ *                    type: object
  *                    description: Provide error description
  *
  * */
@@ -121,7 +121,7 @@ const userCtrl = require('../controllers/user.js');
  *                    description: User id
  *                  token:
  *                    type: string
- *                    description: Bearer JWT Token
+ *                    description: Bearer + encrypted token
  *      401:
  *        description: Password provided by user is incorrect
  *        content:
@@ -150,7 +150,7 @@ const userCtrl = require('../controllers/user.js');
  *              type: object
  *              properties:
  *                  error:
- *                    type: string
+ *                    type: object
  *                    description: Provide error description
  *
  * */

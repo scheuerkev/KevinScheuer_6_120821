@@ -25,7 +25,7 @@ exports.createSauce = (req, res, next) => {
         imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     });
     sauce.save()
-        .then(() => res.status(201).json({ message: 'Post saved successfully!' }))
+        .then(() => res.status(201).json({ message: 'Sauce created successfully!' }))
         .catch( error => res.status(400).json({ error }));
 }
 
@@ -81,7 +81,7 @@ exports.manageLikes = (req, res, next) => {
                         }
                     }
                 )
-                .catch(error => res.status(500).json({ error }));
+                .catch(error => res.status(404).json({ error }));
             break;
 
         //if req.body.like == 1, then add a like and push userId in usersLiked array
@@ -105,7 +105,7 @@ exports.manageLikes = (req, res, next) => {
             break;
 
         default:
-            return res.status(500).json({ message: 'Internal server error '});
+            return res.status(500).json({ message: 'Internal server error'});
     }
 }
 
