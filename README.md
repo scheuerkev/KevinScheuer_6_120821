@@ -18,7 +18,7 @@
 > Piiquante RESTFul API provides usage of Hot Takes web app. To enhance hype through hots sauces, Hot Takes 
 > want to be the web's best hot sauce reviews. This application allow users to post their owns sauces, 
 > like and dislike other users' sauces. Hot Takes is split between front app and this backend app
-> (see below : [How to clone repos and run app ?](#how-to-clone-repos-and-run-app-)). This documentation tell how Piiquante API work.  
+> (see below : [How to clone repos and run app ?](#how-to-clone-repos-and-run-app-)). Please don't forget to read [prerequisites & troubleshooting section](#prerequisites-and-troubleshooting-section-) before This documentation tell how Piiquante API work.  
 
 ### 🏠 [API Repository](https://github.com/scheuerkev/KevinScheuer_6_120821)  
 ### API Reference
@@ -41,6 +41,19 @@
 
 ### 📖 [See API Documentation](http://localhost:3000/api/docs/#/) 
 ⚠️ Run API to access documentation 
+
+### Prerequisites and troubleshooting section
+>To prevent compilation issues you have to be very careful on these points : 
+#### Global app folder
+* Make sure that **Node.js 14.xx** is your current Node.js version. In other cases, you need to install and run this one. Otherwise, your compile work doesn't run.
+
+#### Backend folder
+* In some cases, you'll have to force nodemon global installation on your backend/ folder. After you clone the backend repo, you'll just have to run :
+```npm install -g nodemon``` if your nodemon launching failed : e.g. ```-bash: nodemon: command not found``` OR ```-zsh: nodemon: command not found```. This means that nodemon isn't running globally.
+* Create images/ folder on the root of backend/ folder. This one will be ignored by git but needs to be created to multer work properly
+* Create your .env file on the backend/ root. **That's imperative !** For Mongo Credentials, you can follow a connection how-to on [mongoDB website](https://www.mongodb.com/blog/post/quick-start-nodejs-mongodb--how-to-get-connected-to-your-database).
+#### Frontend folder
+* In some cases, you'll have to override deprecated node-sass version. The best way to do this is replace ```npm install node-sass@4.14.1``` by ```sudo npm install -g --unsafe-perm node-sass --save```. Some node versions doesn't allow installing old versions of a package, so you have to do this as a superuser. Look in your ```package.json``` if node-sass dependencies is something like ```"node-sass": "^4.14.1"```
 
 ## Dotenv configuration
 ### What is Dotenv ?
