@@ -72,12 +72,10 @@ _(We highly recommend to use randomly generated string from at least 28 chars)_
 ## How to clone repos and run app ?  
 ### Front-end repo   
 1. First, clone the repo in a frontend folder :   
-* ```git clone https://github.com/OpenClassrooms-Student-Center/dwj-projet6.git frontend```  
+* ```git clone https://github.com/OpenClassrooms-Student-Center/Web-Developer-P6.git frontend```  
 * ````cd frontend````    
 2. Install dependencies :   
-* ```npm install```  
-* ```npm install node-sass@4.14.1```  
-* ```npm install angular```  
+* ```npm install```   
 3. Then, start front-end app :  
 * ```npm start```  
   
